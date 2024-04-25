@@ -18,27 +18,47 @@ void* allocate(size_t size) {
     return &heap[old_top];
 }
 
+Graph* CreateGraph(int verticies) {
+
+    Graph* g = allocate(sizeof(Graph));
+    g->numVertices = verticies;
+    g->adjlists = allocate(verticies * sizeof(Node*));
+
+    for (int i = 0; i < verticies; i++) {
+
+        g->adjlists[i] = NULL;
+    }
+    return g;
+}
+
 void LoadImage() {
 
     int width;
     int height;
     int channels;
+    
     unsigned char* img = stbi_load("MazeTest/31.bmp", &width, &height, &channels, 1);
     if (img == NULL) {
         printf("Something went wrong while trying to load the image\n");
         return 1;
     }
     for (int i = 0; i < width * height; i++) {
-
+        
         printf("%d\n", img[i]);
 
         if (img[i] == 255) {
 
-            //funny :)
+            Node* n = allocate(sizeof(Node));
+            n->next = NULL;
+            if(//);
+            
         }
     }
+    
     printf("Image was loaded with a width of %d pixels, a height of %d pixels and %d channels\n", width, height, channels);
 }
+
+
 
 void main() {
 
